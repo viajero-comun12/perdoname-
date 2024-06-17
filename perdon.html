@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa con Opciones Sí y No</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('fondo.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        #buttons {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+        #yes-button {
+            background-color: green;
+        }
+        #no-button {
+            background-color: red;
+            position: absolute;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        #image-container {
+            margin-top: 20px;
+            position: relative;
+        }
+        #image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Me perdonas por favor, ya no lo hago más :(</h1>
+    <div id="buttons">
+        <button class="button" id="yes-button" onclick="showMessage()">Sí</button>
+        <button class="button" id="no-button" onclick="moveNoButton()">No</button>
+    </div>
+    <div id="message"></div>
+    <div id="image-container">
+        <img src="imagen.jpg" alt="Imagen descriptiva">
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById('message').textContent = 'Gracias, te amo';
+        }
+
+        function moveNoButton() {
+            const noButton = document.getElementById('no-button');
+            const buttonsDiv = document.getElementById('buttons');
+            const buttonsDivRect = buttonsDiv.getBoundingClientRect();
+            const newLeft = Math.random() * (buttonsDivRect.width - noButton.offsetWidth);
+            const newTop = Math.random() * (buttonsDivRect.height - noButton.offsetHeight);
+            noButton.style.left = `${newLeft}px`;
+            noButton.style.top = `${newTop}px`;
+        }
+    </script>
+</body>
+</html>
